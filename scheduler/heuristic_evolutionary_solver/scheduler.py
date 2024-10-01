@@ -449,10 +449,10 @@ def get_pipelines(candidate_partition=None, candidate_pipeline_parallel_path=Non
 
 if __name__ == "__main__":
     simulate_cases = [
-        config.simulate_0_datacenter,
-        config.simulate_1_datacenter_spot_gpu,
-        config.simulate_2_multi_universities,
-        config.simulate_3_regional_geo_distributed,
+        # config.simulate_0_datacenter,
+        # config.simulate_1_datacenter_spot_gpu,
+        # config.simulate_2_multi_universities,
+        # config.simulate_3_regional_geo_distributed,
         config.simulate_4_worldwide_geo_distributed,
     ]
 
