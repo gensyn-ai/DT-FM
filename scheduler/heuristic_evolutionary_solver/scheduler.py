@@ -6,7 +6,7 @@ import config
 
 
 # GPT-3 XL
-batch_size = 1e6 / 2048
+batch_size = 1e6 / 2048 / 4
 layer_size = 24
 
 # physical topology

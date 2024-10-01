@@ -50,7 +50,7 @@ delay_bandwidth_dict = {
     "Frankfurt-Ireland": (24, 1.08)
 }
 
-nodes = 64
+nodes = 16
 
 
 def simulate_0_datacenter(nodes=64):
@@ -181,19 +181,21 @@ def simulate_3_regional_geo_distributed(nodes=64):
 
 
 # Assume within region is 2 GB, 5 ms.
-def simulate_4_worldwide_geo_distributed(nodes=64):
+def simulate_4_worldwide_geo_distributed():
     print("Simulate case 4: worldwide geo distributed")
     regions = []
     cities = ["Oregon", "Virginia", "Ohio", "Tokyo",
               "Seoul", "London", "Frankfurt", "Ireland"]
+    print(nodes)
     for i in range(nodes):
-        regions.append(cities[i // 8])
+        regions.append(cities[i // 2])
     # cities = ["Oregon", "Virginia", "Ohio", "Tokyo", "Seoul",
     #          "Singapore", "Sydney", "London", "Frankfurt", "Ireland"]
     # np.random.seed = 2022
     # for i in np.random.randint(low=0, high=len(cities), size=nodes):
     #    regions.append(cities[i])
     assert len(regions) == nodes
+    print(f"regions: {regions}")
 
     def get_delay_bandwidth(region1: str, region2: str):
         if region1 == region2:
