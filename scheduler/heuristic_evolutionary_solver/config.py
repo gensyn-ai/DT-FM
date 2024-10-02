@@ -50,7 +50,7 @@ delay_bandwidth_dict = {
     "Frankfurt-Ireland": (24, 1.08)
 }
 
-nodes = 16
+nodes = 8
 
 
 def simulate_0_datacenter(nodes=64):
@@ -188,7 +188,7 @@ def simulate_4_worldwide_geo_distributed():
               "Seoul", "London", "Frankfurt", "Ireland"]
     print(nodes)
     for i in range(nodes):
-        regions.append(cities[i // 2])
+        regions.append(cities[i])
     # cities = ["Oregon", "Virginia", "Ohio", "Tokyo", "Seoul",
     #          "Singapore", "Sydney", "London", "Frankfurt", "Ireland"]
     # np.random.seed = 2022

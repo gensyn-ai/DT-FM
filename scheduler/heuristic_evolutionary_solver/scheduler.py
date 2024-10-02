@@ -5,9 +5,17 @@ from scipy.optimize import linear_sum_assignment
 import config
 
 
-# GPT-3 XL
-batch_size = 1e6 / 2048 / 4
-layer_size = 24
+## GPT-3 XL
+#batch_size = 1e6 / 2048  # 488.28125
+#layer_size = 24
+#layer_size_per_task = 12
+
+# llama
+batch_size = 1e6 / 2048  # 488.28125
+layer_size = 32
+# layer_size_per_task must allow for partition_size to be > 1, 
+# otherwise a ton of assumptions the scheduler makes are violated.
+layer_size_per_task = 16
 
 # physical topology
 num_devices = config.nodes
@@ -16,8 +24,7 @@ peer_bandwidth = None
 regions = None
 
 # assigned task
-batch_size_per_task = 1.25e5 / 2048
-layer_size_per_task = 3
+batch_size_per_task = (batch_size * layer_size) / (num_devices * layer_size_per_task)
 send_gradient_size = 1.3 * \
     np.dtype(np.float32).itemsize * \
     layer_size_per_task / layer_size  # gigabytes
