@@ -188,6 +188,13 @@ def simulate_4_worldwide_geo_distributed():
               "Seoul", "London", "Frankfurt", "Ireland"]
     print(nodes)
     for i in range(nodes):
+        # regions.append(cities[i // 8])
+        # NV - I think this logic is assuming 64 nodes and trying to evenly distribute them across the 8 regions. 
+        # The scheduler assumes an even number of nodes per region, so to change the number of nodes, I had to change 
+        # the denominator of the floor division here I.e - 
+        #  * 32 nodes would be i // 4.
+        #  * 16 nodes would be i // 2.
+        #  *  8 nodes would be i.
         regions.append(cities[i])
     # cities = ["Oregon", "Virginia", "Ohio", "Tokyo", "Seoul",
     #          "Singapore", "Sydney", "London", "Frankfurt", "Ireland"]
